@@ -7,7 +7,7 @@ Pod::Spec.new do |s|
   s.author       = { "zhangzichen" => "1015947235@qq.com" }
   s.platform     = :ios, "8.0"
   s.source       = { :git => "https://github.com/zhangzichen/Pontus.git", :tag => "0.0.2" }
-  s.source_files = "Pontus/**/*.{swift}"
+  s.source_files = "**/*.{swift}"
   s.frameworks   = "UIKit"
   s.requires_arc = true
 
