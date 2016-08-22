@@ -12,15 +12,22 @@ Pontus中很多方法都是为了实现链式语法，或者带有链式语法�
 
 非链式语法：
             object.propertyA = valueA
+
             object.propertyB = valueB
+
             object.propertyC = valueC
+
             object.propertyD = valueD
 
 链式语法：
             object
+                
                 .propertyA(valueA)
+                
                 .propertyB(valueB)
+                
                 .propertyC(valueC)
+                
                 .propertyD(valueD)
 
 
@@ -32,6 +39,8 @@ Pontus中很多方法都是为了实现链式语法，或者带有链式语法�
 
 
 这种方法基本实现：
+            
+
             extension Class {
                 //  Chainable method of property
                 func property(property: propertyType) -> Self {
