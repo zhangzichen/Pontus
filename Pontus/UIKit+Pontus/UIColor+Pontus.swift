@@ -37,6 +37,14 @@ public func HEX(hexString:String) -> UIColor {
     return UIColor(hexString: hexString)
 }
 
+
+public func randomColor() -> UIColor {
+    let red = CGFloat(arc4random()) % 226
+    let green = CGFloat(arc4random()) % 226
+    let blue = CGFloat(arc4random()) % 226
+    return RGB(red, green, blue)
+}
+
 public extension UIColor {
     
     func alpha(alpha:CGFloatable) -> UIColor {
