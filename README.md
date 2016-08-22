@@ -11,6 +11,7 @@ Pontus 的名字取自希腊神话名，比较喜欢他的蕴意：深不可测�
 Pontus中很多方法都是为了实现链式语法，或者带有链式语法的特性
 
 非链式语法：
+
             object.propertyA = valueA
 
             object.propertyB = valueB
@@ -20,6 +21,7 @@ Pontus中很多方法都是为了实现链式语法，或者带有链式语法�
             object.propertyD = valueD
 
 链式语法：
+
             object
                 
                 .propertyA(valueA)
