@@ -12,8 +12,6 @@
 		2E82DC981D683719008559EA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2E82DC961D683719008559EA /* Main.storyboard */; };
 		2E82DC9A1D683719008559EA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2E82DC991D683719008559EA /* Assets.xcassets */; };
 		2E82DC9D1D683719008559EA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2E82DC9B1D683719008559EA /* LaunchScreen.storyboard */; };
-		2E82DCA81D683719008559EA /* PontusDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E82DCA71D683719008559EA /* PontusDemoTests.swift */; };
-		2E82DCB31D683719008559EA /* PontusDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E82DCB21D683719008559EA /* PontusDemoUITests.swift */; };
 		2E82DCC61D683AE8008559EA /* ChineseDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E82DCC51D683AE8008559EA /* ChineseDate.swift */; };
 		2E82DCC81D683B5A008559EA /* UIView+FangYuan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E82DCC71D683B5A008559EA /* UIView+FangYuan.swift */; };
 		2E82DCCA1D683C39008559EA /* FangYuan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E82DCC91D683C39008559EA /* FangYuan.swift */; };
@@ -70,11 +68,7 @@
 		2E82DC9C1D683719008559EA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2E82DC9E1D683719008559EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2E82DCA31D683719008559EA /* PontusDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PontusDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		2E82DCA71D683719008559EA /* PontusDemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PontusDemoTests.swift; sourceTree = "<group>"; };
-		2E82DCA91D683719008559EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2E82DCAE1D683719008559EA /* PontusDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PontusDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		2E82DCB21D683719008559EA /* PontusDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PontusDemoUITests.swift; sourceTree = "<group>"; };
-		2E82DCB41D683719008559EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2E82DCC51D683AE8008559EA /* ChineseDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChineseDate.swift; sourceTree = "<group>"; };
 		2E82DCC71D683B5A008559EA /* UIView+FangYuan.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+FangYuan.swift"; sourceTree = "<group>"; };
 		2E82DCC91D683C39008559EA /* FangYuan.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FangYuan.swift; sourceTree = "<group>"; };
@@ -135,8 +129,6 @@
 			children = (
 				2E82DCC01D683728008559EA /* Pontus */,
 				2E82DC911D683719008559EA /* PontusDemo */,
-				2E82DCA61D683719008559EA /* PontusDemoTests */,
-				2E82DCB11D683719008559EA /* PontusDemoUITests */,
 				2E82DC901D683719008559EA /* Products */,
 			);
 			sourceTree = "<group>";
@@ -162,24 +154,6 @@
 				2E82DC9E1D683719008559EA /* Info.plist */,
 			);
 			path = PontusDemo;
-			sourceTree = "<group>";
-		};
-		2E82DCA61D683719008559EA /* PontusDemoTests */ = {
-			isa = PBXGroup;
-			children = (
-				2E82DCA71D683719008559EA /* PontusDemoTests.swift */,
-				2E82DCA91D683719008559EA /* Info.plist */,
-			);
-			path = PontusDemoTests;
-			sourceTree = "<group>";
-		};
-		2E82DCB11D683719008559EA /* PontusDemoUITests */ = {
-			isa = PBXGroup;
-			children = (
-				2E82DCB21D683719008559EA /* PontusDemoUITests.swift */,
-				2E82DCB41D683719008559EA /* Info.plist */,
-			);
-			path = PontusDemoUITests;
 			sourceTree = "<group>";
 		};
 		2E82DCC01D683728008559EA /* Pontus */ = {
@@ -316,18 +290,21 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = Pontus;
 				TargetAttributes = {
 					2E82DC8E1D683719008559EA = {
 						CreatedOnToolsVersion = 7.3;
+						LastSwiftMigration = 0800;
 					};
 					2E82DCA21D683719008559EA = {
 						CreatedOnToolsVersion = 7.3;
+						LastSwiftMigration = 0800;
 						TestTargetID = 2E82DC8E1D683719008559EA;
 					};
 					2E82DCAD1D683719008559EA = {
 						CreatedOnToolsVersion = 7.3;
+						LastSwiftMigration = 0800;
 						TestTargetID = 2E82DC8E1D683719008559EA;
 					};
 				};
@@ -421,7 +398,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2E82DCA81D683719008559EA /* PontusDemoTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -429,7 +405,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2E82DCB31D683719008559EA /* PontusDemoUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -482,8 +457,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -528,8 +505,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -548,6 +527,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -558,9 +538,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = PontusDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Pontus.PontusDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -569,9 +551,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = PontusDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Pontus.PontusDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -583,6 +567,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Pontus.PontusDemoTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PontusDemo.app/PontusDemo";
 			};
 			name = Debug;
@@ -595,6 +580,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Pontus.PontusDemoTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PontusDemo.app/PontusDemo";
 			};
 			name = Release;
@@ -606,6 +592,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Pontus.PontusDemoUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = PontusDemo;
 			};
 			name = Debug;
@@ -617,6 +604,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Pontus.PontusDemoUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = PontusDemo;
 			};
 			name = Release;
@@ -640,6 +628,7 @@
 				2E82DCB91D683719008559EA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2E82DCBA1D683719008559EA /* Build configuration list for PBXNativeTarget "PontusDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -648,6 +637,7 @@
 				2E82DCBC1D683719008559EA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2E82DCBD1D683719008559EA /* Build configuration list for PBXNativeTarget "PontusDemoUITests" */ = {
 			isa = XCConfigurationList;
@@ -656,6 +646,7 @@
 				2E82DCBF1D683719008559EA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

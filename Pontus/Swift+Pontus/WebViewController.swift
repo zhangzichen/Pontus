@@ -8,8 +8,8 @@ import WebKit
 class WebViewController: UIViewController {
     
     enum Style {
-        case Light
-        case Dark
+        case light
+        case dark
         //        case Tint
     }
     
@@ -18,20 +18,20 @@ class WebViewController: UIViewController {
     var webView : WKWebView!
     var navigationBar : UIView!
     
-    var style                = Style.Dark
+    var style                = Style.dark
     var urlString            = "http://www.baidu.com"
-    let progressView         = UIProgressView(progressViewStyle: UIProgressViewStyle.Bar)
+    let progressView         = UIProgressView(progressViewStyle: UIProgressViewStyle.bar)
     let backButton           = UIButton()
     let closeButton          = UIButton()
     let titleLabel           = UILabel()
     var showBackString       = true
     
-    var originStatusBarStyle = UIStatusBarStyle.Default
+    var originStatusBarStyle = UIStatusBarStyle.default
     var originInteractivePopGestureRecognizerEnable = true
     
     var maxLeft : CGFloat {
         //  左侧最右边的 button
-        let leftButton = closeButton.hidden ? backButton : closeButton
+        let leftButton = closeButton.isHidden ? backButton : closeButton
         return leftButton.frame.origin.x + leftButton.frame.size.width + 8
     }
     
@@ -65,12 +65,12 @@ extension WebViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        titleLabel.text(staticTitle)
+        _ = titleLabel.text(staticTitle)
         
         switch style {
-        case .Dark:
-            navigationBar = UIVisualEffectView(blur: UIBlurEffectStyle.Dark)
-        case .Light:
+        case .dark:
+            navigationBar = UIVisualEffectView(blur: UIBlurEffectStyle.dark)
+        case .light:
             navigationBar = UIView().backgroundColor(White)
         }
         
@@ -103,9 +103,9 @@ extension WebViewController {
         
         navigationBar.frame = CM(y: 0, width: ScreenWidth, height: NavigationBarHeight)
         
-        webView.scrollView.backgroundColor(UIColor.grayColor())
-        webView.scrollView.insetTop(44)
-        webView.UIDelegate = self
+        _ = webView.scrollView.backgroundColor(UIColor.gray)
+        _ = webView.scrollView.insetTop(44)
+        webView.uiDelegate = self
         webView.navigationDelegate = self
         webView.allowsBackForwardNavigationGestures = true
         
@@ -114,85 +114,85 @@ extension WebViewController {
         let screenEdgePanGestureRecognizerEnablePanView = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: ScreenHeight))
         webView.addSubview(screenEdgePanGestureRecognizerEnablePanView)
         
-        backButton
+        _ = backButton
             .superView(navigationBar)
             .target(self, upInsideAction: #selector(WebViewController.back))
-            .title(showBackString ? "返回" : "", titleColor: style == .Dark ? White : Red)
+            .title(showBackString ? "返回" : "", titleColor: style == .dark ? White : Red)
             .titleFontSize(15)
             .frame(x: 0, y: 20, width: 67, height: 44)  //WebViewNavigationBarBackIndicator
-            .imageForNormal(UIImage(named: style == .Dark ? "backArrow" : "WebViewNavigationBarBackIndicator_DabaiMainColor"))
+            .imageForNormal(UIImage(named: style == .dark ? "backArrow" : "WebViewNavigationBarBackIndicator_DabaiMainColor"))
         backButton.imageEdgeInsets = UIEdgeInsets(top: 5, left: 14, bottom: 5, right: 67 - 26.5)
         backButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: 4, bottom: 0, right: 0)
         
         navigationBar.addSubview(closeButton)
-        closeButton.addTarget(self, action: #selector(WebViewController.close), forControlEvents: UIControlEvents.TouchUpInside)
-        closeButton
-            .title("关闭", titleColor: style == .Dark ? White : Red)
+        closeButton.addTarget(self, action: #selector(WebViewController.close), for: UIControlEvents.touchUpInside)
+        _ = closeButton
+            .title("关闭", titleColor: style == .dark ? White : Red)
             .titleFontSize(15)
             .frame(x: 67, y: 20, width: 40, height: 44)
-        closeButton.hidden = true
+        closeButton.isHidden = true
         
         navigationBar.addSubview(titleLabel)
-        titleLabel.textColor(style == .Dark ? White : Red)
+        _ = titleLabel.textColor(style == .dark ? White : Red)
         let titleFrame = CGRect(x: maxLeft, y: 26, width: ScreenWidth - maxLeft, height: 30)
-        titleLabel.frame(titleFrame)
-        titleLabel.textAlignment(NSTextAlignment.Center)
+        _ = titleLabel.frame(titleFrame)
+        _ = titleLabel.textAlignment(NSTextAlignment.center)
         
         navigationBar.addSubview(progressView)
         progressView.frame = CM(y: NavigationBarHeight, width: ScreenWidth, height: 5)
-        progressView.progressViewStyle = .Bar
+        progressView.progressViewStyle = .bar
         progressView.progressTintColor = RGB(50, 230, 50)
         progressView.trackTintColor = Clear
         
         navigationController?.interactivePopGestureRecognizer?.delegate = self
         
-        webView.addObserver(self, forKeyPath: "estimatedProgress", options: NSKeyValueObservingOptions.New, context: nil)
-        webView.addObserver(self, forKeyPath: "title", options: NSKeyValueObservingOptions.New, context: nil)
-        webView.addObserver(self, forKeyPath: "canGoForward", options: NSKeyValueObservingOptions.New, context: nil)
+        webView.addObserver(self, forKeyPath: "estimatedProgress", options: NSKeyValueObservingOptions.new, context: nil)
+        webView.addObserver(self, forKeyPath: "title", options: NSKeyValueObservingOptions.new, context: nil)
+        webView.addObserver(self, forKeyPath: "canGoForward", options: NSKeyValueObservingOptions.new, context: nil)
         
-        if style == .Light {
+        if style == .light {
             let line = UIView(frame: CGRect(x: 0, y: 63.5, width: ScreenWidth, height: 0.5)).backgroundColor(HEX("c2c2c2"))
             navigationBar.addSubview(line)
-            navigationBar.layer.shadowOffset = CGSizeMake(0, 0.3)
+            navigationBar.layer.shadowOffset = CGSize(width: 0, height: 0.3)
             navigationBar.layer.shadowOpacity = 0.1
             navigationBar.layer.shadowRadius = 0.5
         }
         
-        backgroundColor(Black)
-        addSubview(webView)
-        addSubview(navigationBar)
+        _ = backgroundColor(Black)
+        _ = addSubview(webView)
+        _ = addSubview(navigationBar)
         
-        webView.loadRequest(NSURLRequest(URL: urlString.URL))
+        webView.load(URLRequest(url: urlString.URL as URL))
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        originStatusBarStyle = UIApplication.sharedApplication().statusBarStyle
+        originStatusBarStyle = UIApplication.shared.statusBarStyle
         myNavigationController = navigationController
         myNavigationController?.setNavigationBarHidden(true, animated: true)
         
-        if let enable = myNavigationController?.interactivePopGestureRecognizer?.enabled {
+        if let enable = myNavigationController?.interactivePopGestureRecognizer?.isEnabled {
             originInteractivePopGestureRecognizerEnable = enable
         }
         
-        PontusApplication.SetStatusBarStyle(style == .Dark ? .LightContent : .Default, animated: true)
+        PontusApplication.SetStatusBarStyle(style == .dark ? .lightContent : .default, animated: true)
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        myNavigationController?.interactivePopGestureRecognizer?.enabled = true
+        myNavigationController?.interactivePopGestureRecognizer?.isEnabled = true
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         myNavigationController?.setNavigationBarHidden(false, animated: true)
         PontusApplication.SetStatusBarStyle(originStatusBarStyle, animated: true)
     }
     
-    override func viewDidDisappear(animated: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         myNavigationController?.interactivePopGestureRecognizer?.delegate = nil
-        myNavigationController?.interactivePopGestureRecognizer?.enabled = originInteractivePopGestureRecognizerEnable
+        myNavigationController?.interactivePopGestureRecognizer?.isEnabled = originInteractivePopGestureRecognizerEnable
         myNavigationController = nil
         webView.stopLoading()
     }
@@ -200,7 +200,7 @@ extension WebViewController {
 
 // MARK: - Methods
 extension WebViewController {
-    func configWebViewConfiguration(configuration:WKWebViewConfiguration) {
+    func configWebViewConfiguration(_ configuration:WKWebViewConfiguration) {
         
     }
     
@@ -208,15 +208,15 @@ extension WebViewController {
         if webView.canGoBack {
             webView.goBack()
         } else {
-            navigationController?.popViewControllerAnimated(true)
+            _ = navigationController?.popViewController(animated: true)
         }
     }
     
     func close() {
-        navigationController?.popViewControllerAnimated(true)
+        _ = navigationController?.popViewController(animated: true)
     }
     
-    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         
         guard let keyPath = keyPath else {
             return
@@ -226,8 +226,8 @@ extension WebViewController {
         case "estimatedProgress":
             AnimateWithDuration(0.25, {
                 progressView.progress = Float(webView.estimatedProgress)
-                progressView.hidden = (webView.estimatedProgress == 1) ? true : false
-                UIApplication.sharedApplication().networkActivityIndicatorVisible = (webView.estimatedProgress == 1) ? false : true
+                progressView.isHidden = (webView.estimatedProgress == 1) ? true : false
+                UIApplication.shared.isNetworkActivityIndicatorVisible = (webView.estimatedProgress == 1) ? false : true
                 adjustTitleLabelWidth()
             })
         case "title":
@@ -252,20 +252,22 @@ extension WebViewController {
     
     func adjustTitleLabelWidth() {
         let title = staticTitle ?? (webView.title ?? (self.title ?? ""))
-        titleLabel.text(title)
-        let displayWidth = title.NS.boundingRectWithSize(CGSize(width: 0, height: 30), options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes:[NSFontAttributeName: UIFont.systemFontOfSize(17)], context: nil).width
+        _ = titleLabel.text(title)
+        let displayWidth = title.NS.boundingRect(with: CGSize(width: 0, height: 30), options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes:[NSFontAttributeName: UIFont.systemFont(ofSize: 17)], context: nil).width
         if displayWidth < maxCenterWidth {
-            titleLabel.frame(CM(y: 26, width: maxCenterWidth, height: 30))
-                .textAlignment(NSTextAlignment.Center)
+           _ =  titleLabel
+                .frame(CM(y: 26, width: maxCenterWidth, height: 30))
+                .textAlignment(NSTextAlignment.center)
         } else {
-            titleLabel.frame(x: maxLeft, y: 26, width: ScreenWidth - maxLeft, height: 30)
-                .textAlignment(NSTextAlignment.Left)
+            _ = titleLabel
+                .frame(x: maxLeft, y: 26, width: ScreenWidth - maxLeft, height: 30)
+                .textAlignment(NSTextAlignment.left)
         }
     }
     
     func judgeShouldShowCloseButton() {
         if webView.backForwardList.forwardItem != nil {
-            closeButton.hidden = false
+            closeButton.isHidden = false
             adjustTitleLabelWidth()
         }
     }
@@ -273,7 +275,7 @@ extension WebViewController {
 
 // MARK: - UIGestureRecognizerDelegate
 extension WebViewController : UIGestureRecognizerDelegate {
-    func gestureRecognizerShouldBegin(gestureRecognizer: UIGestureRecognizer) -> Bool {
+    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
         let shouldBegin = !webView.canGoBack
         return shouldBegin
     }
@@ -282,52 +284,52 @@ extension WebViewController : UIGestureRecognizerDelegate {
 
 // MARK: - WKUIDelegate
 extension WebViewController : WKUIDelegate {
-    func webView(webView: WKWebView, runJavaScriptAlertPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: () -> Void) {
-        let alert = UIAlertController(title: "Tip", message: message, preferredStyle: .Alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { (_) -> Void in
+    func webView(_ webView: WKWebView, runJavaScriptAlertPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping () -> Void) {
+        let alert = UIAlertController(title: "Tip", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (_) -> Void in
             // We must call back js
             completionHandler()
         }))
         
-        self.presentViewController(alert, animated: true, completion: nil)
+        self.present(alert, animated: true, completion: nil)
     }
     
-    func webView(webView: WKWebView, runJavaScriptConfirmPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: (Bool) -> Void) {
-        let alert = UIAlertController(title: "Tip", message: message, preferredStyle: .Alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { (_) -> Void in
+    func webView(_ webView: WKWebView, runJavaScriptConfirmPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping (Bool) -> Void) {
+        let alert = UIAlertController(title: "Tip", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (_) -> Void in
             // 点击完成后，可以做相应处理，最后再回调js端
             completionHandler(true)
         }))
-        alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: { (_) -> Void in
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (_) -> Void in
             // 点击取消后，可以做相应处理，最后再回调js端
             completionHandler(false)
         }))
         
-        self.presentViewController(alert, animated: true, completion: nil)
+        self.present(alert, animated: true, completion: nil)
     }
     
-    func webView(webView: WKWebView, runJavaScriptTextInputPanelWithPrompt prompt: String, defaultText: String?, initiatedByFrame frame: WKFrameInfo, completionHandler: (String?) -> Void) {
-        let alert = UIAlertController(title: prompt, message: defaultText, preferredStyle: .Alert)
+    func webView(_ webView: WKWebView, runJavaScriptTextInputPanelWithPrompt prompt: String, defaultText: String?, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping (String?) -> Void) {
+        let alert = UIAlertController(title: prompt, message: defaultText, preferredStyle: .alert)
         
-        alert.addTextFieldWithConfigurationHandler { (textField: UITextField) -> Void in
-            textField.textColor = UIColor.redColor()
+        alert.addTextField { (textField: UITextField) -> Void in
+            textField.textColor = UIColor.red
         }
-        alert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { (_) -> Void in
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (_) -> Void in
             // 处理好之前，将值传到js端
             completionHandler(alert.textFields![0].text!)
         }))
         
-        self.presentViewController(alert, animated: true, completion: nil)
+        self.present(alert, animated: true, completion: nil)
     }
     
-    func webViewDidClose(webView: WKWebView) {
+    func webViewDidClose(_ webView: WKWebView) {
     }
     
     
 }
 
 extension WebViewController : WKScriptMessageHandler {
-    func userContentController(userContentController: WKUserContentController, didReceiveScriptMessage message: WKScriptMessage) {
+    func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
         print(message.body)
         // 如果在开始时就注入有很多的名称，那么我们就需要区分来处理
         if message.name == "appmodel" {
@@ -337,7 +339,7 @@ extension WebViewController : WKScriptMessageHandler {
 }
 
 extension WebViewController {
-    static func showInViewController(vc:UIViewController, dismiss:(()->Void)? = nil) {
+    static func showInViewController(_ vc:UIViewController, dismiss:(()->Void)? = nil) {
         
 //        guard let window = vc.view.window else {
 //            return
@@ -365,21 +367,21 @@ extension WebViewController {
 // MARK: - WKNavigationDelegate
 extension WebViewController : WKNavigationDelegate {
     
-    func webView(webView: WKWebView, didCommitNavigation navigation: WKNavigation!) {
+    func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
         
     }
     
-    func webView(webView: WKWebView, didFinishNavigation navigation: WKNavigation!) {
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         //  http://stackoverflow.com/questions/31955880/wkwebview-not-opening-some-target-blank-links
         let jsCode = "var allLinks = document.getElementsByTagName('a');if (allLinks) { var i;for (i=0; i<allLinks.length; i++) {var link = allLinks[i];var target = link.getAttribute('target');if (target && target == '_blank') {link.setAttribute('target','_self');} } }"
         webView.evaluateJavaScript(jsCode, completionHandler: nil)
     }
     
-    func webView(webView: WKWebView, decidePolicyForNavigationAction navigationAction: WKNavigationAction, decisionHandler: (WKNavigationActionPolicy) -> Void) {
+    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
         
         
-        guard let url = navigationAction.request.URL else {
-            decisionHandler(WKNavigationActionPolicy.Allow)
+        guard let url = navigationAction.request.url else {
+            decisionHandler(WKNavigationActionPolicy.allow)
             return
         }
         
@@ -414,26 +416,26 @@ extension WebViewController : WKNavigationDelegate {
         //            return true;   //如没有location对应的属性，则读取网络相关资源
         //        }
         
-        let regex = try! NSRegularExpression(pattern: "\\/\\/itunes\\.apple\\.com\\/", options: NSRegularExpressionOptions.CaseInsensitive)
+        let regex = try! NSRegularExpression(pattern: "\\/\\/itunes\\.apple\\.com\\/", options: NSRegularExpression.Options.caseInsensitive)
         
-        if regex.numberOfMatchesInString(urlString, options: NSMatchingOptions.ReportProgress, range: NSMakeRange(0, urlString.characters.count)) > 0 {
+        if regex.numberOfMatches(in: urlString, options: NSRegularExpression.MatchingOptions.reportProgress, range: NSMakeRange(0, urlString.characters.count)) > 0 {
             
-            UIApplication.sharedApplication().openURL(url)
-            decisionHandler(WKNavigationActionPolicy.Cancel)
+            UIApplication.shared.openURL(url)
+            decisionHandler(WKNavigationActionPolicy.cancel)
             return
             
         }
         
-        decisionHandler(WKNavigationActionPolicy.Allow)
+        decisionHandler(WKNavigationActionPolicy.allow)
     }
     
-    func webView(webView: WKWebView, didFailNavigation navigation: WKNavigation!, withError error: NSError) {
-        progressView.hidden = true
+    func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
+        progressView.isHidden = true
         //        loadingFailImageView.hidden = false
-        UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+        UIApplication.shared.isNetworkActivityIndicatorVisible = false
     }
     
-    func webViewWebContentProcessDidTerminate(webView: WKWebView) {
+    func webViewWebContentProcessDidTerminate(_ webView: WKWebView) {
         
     }
     

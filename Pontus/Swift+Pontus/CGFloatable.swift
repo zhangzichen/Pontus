@@ -82,7 +82,7 @@ public func /(lhs: CGFloatable, rhs: CGFloatable) -> CGFloat {
  - parameter _414: 6p/6sp
  
  */
-public func ValueWithScreenWidth_320(_320 : CGFloatable, _375 : CGFloatable, _414 : CGFloatable) -> CGFloat {
+public func ValueWithScreenWidth_320(_ _320 : CGFloatable, _375 : CGFloatable, _414 : CGFloatable) -> CGFloat {
     switch ScreenWidth {
     case 414.f:
         return _414.f
@@ -102,7 +102,7 @@ public func ValueWithScreenWidth_320(_320 : CGFloatable, _375 : CGFloatable, _41
  - parameter _736: 6p/6sp
  
  */
-public func ValueWithScreenHeight_480(_480 : CGFloatable, _568: CGFloatable, _667: CGFloatable, _736: CGFloatable) -> CGFloat {
+public func ValueWithScreenHeight_480(_ _480 : CGFloatable, _568: CGFloatable, _667: CGFloatable, _736: CGFloatable) -> CGFloat {
     switch ScreenHeight {
     case 480.f:
         return _480.f

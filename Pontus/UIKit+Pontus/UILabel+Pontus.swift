@@ -4,7 +4,7 @@ import Foundation
 import UIKit
 
 public extension UILabel {
-    public func numberOfLines(numberOfLines : Int) -> Self {
+    public func numberOfLines(_ numberOfLines : Int) -> Self {
         self.numberOfLines = numberOfLines
         return self
     }

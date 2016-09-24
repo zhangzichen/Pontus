@@ -59,109 +59,109 @@ public extension UIScrollView {
         }
     }
     
-    func delegate(delegate: UIScrollViewDelegate) -> Self {
+    func delegate(_ delegate: UIScrollViewDelegate) -> Self {
         self.delegate = delegate
         return self
     }
     
-    func contentInsetTop(top:CGFloat) -> Self {
+    func contentInsetTop(_ top:CGFloat) -> Self {
         insetTop = top
         return self
     }
     
-    func contentInsetBottom(bottom:CGFloat) -> Self {
+    func contentInsetBottom(_ bottom:CGFloat) -> Self {
         insetBottom = bottom
         return self
     }
     
-    func contentInsetLeft(left:CGFloat) -> Self {
+    func contentInsetLeft(_ left:CGFloat) -> Self {
         self.contentInset.left = left
         return self
     }
     
-    func contentInsetRight(right:CGFloat) -> Self {
+    func contentInsetRight(_ right:CGFloat) -> Self {
         self.contentInset.right = right
         return self
     }
     
-    func insetBottom(bottom : CGFloat) -> Self {
+    func insetBottom(_ bottom : CGFloat) -> Self {
         insetBottom = bottom
         scrollIndicatorInsets.bottom = bottom
         return self
     }
     
-    func offsetX(offsetX:CGFloat) -> Self {
+    func offsetX(_ offsetX:CGFloat) -> Self {
         self.offsetX = offsetX
         return self
     }
     
-    func offsetY(offsetY : CGFloat) -> Self {
+    func offsetY(_ offsetY : CGFloat) -> Self {
         self.offsetY = offsetY
         return self
     }
     
-    func insetTop(top : CGFloat) -> Self {
+    func insetTop(_ top : CGFloat) -> Self {
         insetTop = top
         scrollIndicatorInsets.top = top
         return self
     }
     
-    func bounces(bounces : Bool) -> Self {
+    func bounces(_ bounces : Bool) -> Self {
         self.bounces = bounces
         return self
     }
     
-    func contentSize(size : CGSize) -> Self {
+    func contentSize(_ size : CGSize) -> Self {
         contentSize = size
         return self
     }
     
-    func contentSize(width:CGFloat, height:CGFloat) -> Self {
+    func contentSize(_ width:CGFloat, height:CGFloat) -> Self {
         contentSize = CGSize(width: width, height: height)
         return self
     }
     
-    func contentInset(contentInset : UIEdgeInsets) -> Self {
+    func contentInset(_ contentInset : UIEdgeInsets) -> Self {
         self.contentInset = contentInset
         return self
     }
     
-    func scrollIndicatorInsets(scrollIndicatorInsets : UIEdgeInsets) -> Self {
+    func scrollIndicatorInsets(_ scrollIndicatorInsets : UIEdgeInsets) -> Self {
         self.scrollIndicatorInsets = scrollIndicatorInsets
         return self
     }
     
-    func contentOffset(contentOffset : CGPoint) -> Self {
+    func contentOffset(_ contentOffset : CGPoint) -> Self {
         self.contentOffset = contentOffset
         return self
     }
     
-    func alwaysBounceHorizontal(alwaysBounceHorizontal : Bool) -> Self {
+    func alwaysBounceHorizontal(_ alwaysBounceHorizontal : Bool) -> Self {
         self.alwaysBounceHorizontal = alwaysBounceHorizontal
         return self
     }
     
-    func alwaysBounceVertical(alwaysBounceVertical : Bool) -> Self {
+    func alwaysBounceVertical(_ alwaysBounceVertical : Bool) -> Self {
         self.alwaysBounceVertical = alwaysBounceVertical
         return self
     }
     
-    func scrollEnabled(scrollEnabled : Bool) -> Self {
-        self.scrollEnabled = scrollEnabled
+    func scrollEnabled(_ scrollEnabled : Bool) -> Self {
+        self.isScrollEnabled = scrollEnabled
         return self
     }
     
-    func pagingEnabled(pagingEnabled : Bool) -> Self {
-        self.pagingEnabled = pagingEnabled
+    func pagingEnabled(_ pagingEnabled : Bool) -> Self {
+        self.isPagingEnabled = pagingEnabled
         return self
     }
     
-    func showsVerticalScrollIndicator(showsVerticalScrollIndicator:Bool) -> Self {
+    func showsVerticalScrollIndicator(_ showsVerticalScrollIndicator:Bool) -> Self {
         self.showsVerticalScrollIndicator = showsVerticalScrollIndicator
         return self
     }
     
-    func showsHorizontalScrollIndicator(showsHorizontalScrollIndicator: Bool) -> Self {
+    func showsHorizontalScrollIndicator(_ showsHorizontalScrollIndicator: Bool) -> Self {
         self.showsHorizontalScrollIndicator = showsHorizontalScrollIndicator
         return self
     }

@@ -33,73 +33,73 @@ public extension UIView {
 
 public extension UIView {
     
-    private var fangYuanX: FangYuan {
+    fileprivate var fangYuanX: FangYuan {
         if objc_getAssociatedObject(self, &X) == nil {
             objc_setAssociatedObject(self, &X, FangYuan(), .OBJC_ASSOCIATION_RETAIN)
         }
         return objc_getAssociatedObject(self, &X) as! FangYuan
     }
-    private var fangYuanY: FangYuan {
+    fileprivate var fangYuanY: FangYuan {
         if objc_getAssociatedObject(self, &Y) == nil {
             objc_setAssociatedObject(self, &Y, FangYuan(), .OBJC_ASSOCIATION_RETAIN)
         }
         return objc_getAssociatedObject(self, &Y) as! FangYuan
     }
     
-    func left(left:CGFloat) -> Self {
+    func left(_ left:CGFloat) -> Self {
         self.left = left
         return self
     }
     
-    func right(right:CGFloat) -> Self {
+    func right(_ right:CGFloat) -> Self {
         self.right = right
         return self
     }
     
-    func top(top:CGFloat) -> Self {
+    func top(_ top:CGFloat) -> Self {
         self.top = top
         return self
     }
     
-    func bottom(bottom:CGFloat) -> Self {
+    func bottom(_ bottom:CGFloat) -> Self {
         self.bottom = bottom
         return self
     }
     
-    func height(height:CGFloat) -> Self {
+    func height(_ height:CGFloat) -> Self {
         self.height = height
         return self
     }
     
-    func width(width:CGFloat) -> Self {
+    func width(_ width:CGFloat) -> Self {
         self.width = width
         return self
     }
     
-    func size(size:CGSize) -> Self {
+    func size(_ size:CGSize) -> Self {
         self.size = size
         return self
     }
     
-    func size(width width: CGFloat, height:CGFloat) -> Self {
+    func size(width: CGFloat, height:CGFloat) -> Self {
         return self.size(CGSize(width: width, height: height))
     }
     
-    func origin(origin:CGPoint) -> Self {
+    func origin(_ origin:CGPoint) -> Self {
         self.origin = origin
         return self
     }
     
-    func origin(x x:CGFloat, y:CGFloat) -> Self {
+    func origin(x:CGFloat, y:CGFloat) -> Self {
         return self.origin(CGPoint(x: x, y: y))
     }
     
-    func center(center:CGPoint) -> Self {
+    func center(_ center:CGPoint) -> Self {
         self.center = center
         return self
     }
     
-    func edge(edge:UIEdgeInsets) -> Self {
+    func edge(_ edge:UIEdgeInsets) -> Self {
         top = edge.top
         bottom = edge.bottom
         left = edge.left
@@ -107,7 +107,7 @@ public extension UIView {
         return self
     }
     
-    private var hasNoSuperView : Bool {
+    fileprivate var hasNoSuperView : Bool {
         let noSuperView = superview == nil
         if  noSuperView {
             tellHasNoSuperView()
@@ -115,11 +115,11 @@ public extension UIView {
         return noSuperView
     }
     
-    private func tellHasNoSuperView() {
+    fileprivate func tellHasNoSuperView() {
         print("⚠️FangYuan: You must set superView before use FangYuan!")
     }
     
-    private(set) var left: CGFloat {
+    fileprivate(set) var left: CGFloat {
         get {
             return frame.origin.x
         }
@@ -135,7 +135,7 @@ public extension UIView {
         }
     }
     
-    private(set) var width: CGFloat {
+    fileprivate(set) var width: CGFloat {
         get {
             return frame.size.width
         }
@@ -151,7 +151,7 @@ public extension UIView {
         }
     }
     
-    private(set) var right: CGFloat {
+    fileprivate(set) var right: CGFloat {
         get {
             if hasNoSuperView {
                 return 0
@@ -171,7 +171,7 @@ public extension UIView {
         }
     }
     
-    private(set) var top: CGFloat {
+    fileprivate(set) var top: CGFloat {
         get {
             return frame.origin.y
         }
@@ -187,7 +187,7 @@ public extension UIView {
         }
     }
     
-    private(set) var height: CGFloat {
+    fileprivate(set) var height: CGFloat {
         get {
             return frame.size.height
         }
@@ -203,7 +203,7 @@ public extension UIView {
         }
     }
     
-    private(set) var bottom: CGFloat {
+    fileprivate(set) var bottom: CGFloat {
         get {
             if hasNoSuperView {
                 return 0
@@ -223,7 +223,7 @@ public extension UIView {
         }
     }
     
-    private(set) var origin: CGPoint {
+    fileprivate(set) var origin: CGPoint {
         get {
             return frame.origin
         }
@@ -233,7 +233,7 @@ public extension UIView {
         }
     }
     
-    private(set) var size: CGSize {
+    fileprivate(set) var size: CGSize {
         get {
             return frame.size
         }
@@ -243,7 +243,7 @@ public extension UIView {
         }
     }
     
-    private(set) var reOrigin: CGPoint {
+    fileprivate(set) var reOrigin: CGPoint {
         get {
             return CGPoint(x: right, y: bottom)
         }

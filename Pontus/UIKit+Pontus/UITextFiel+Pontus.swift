@@ -3,33 +3,33 @@ import UIKit
 
 public extension UITextField {
     
-    func placeholder(placeholder : String) -> Self{
+    func placeholder(_ placeholder : String) -> Self{
         self.placeholder = placeholder
         return self
     }
     
-    func leftWidth(leftWidth : CGFloat) -> Self {
+    func leftWidth(_ leftWidth : CGFloat) -> Self {
         leftView = UIView(frame: CGRect(x: 0, y: 0, width: leftWidth, height: 5))
-        leftViewMode = UITextFieldViewMode.Always
+        leftViewMode = UITextFieldViewMode.always
         return self
     }
     
-    func keyboardType(keyboardType : UIKeyboardType) -> Self {
+    func keyboardType(_ keyboardType : UIKeyboardType) -> Self {
         self.keyboardType = keyboardType
         return self
     }
     
-    func secureTextEntry(secureTextEntry : Bool) -> Self {
-        self.secureTextEntry = secureTextEntry
+    func secureTextEntry(_ secureTextEntry : Bool) -> Self {
+        self.isSecureTextEntry = secureTextEntry
         return self
     }
     
-    func returnKeyType(returnKeyType: UIReturnKeyType) -> Self {
+    func returnKeyType(_ returnKeyType: UIReturnKeyType) -> Self {
         self.returnKeyType = returnKeyType
         return self
     }
     
-    func delegate(delegate:UITextFieldDelegate) -> Self {
+    func delegate(_ delegate:UITextFieldDelegate) -> Self {
         self.delegate = delegate
         return self
     }

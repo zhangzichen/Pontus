@@ -5,9 +5,9 @@ import UIKit
 internal class FangYuan {
     
     enum ConstraintDimension {
-        case X
-        case Y
-        case Z
+        case x
+        case y
+        case z
     }
     
     var last : ConstraintDimension?
@@ -18,13 +18,13 @@ internal class FangYuan {
                 return
             }
             if let last = last {
-                if last == .Y {
+                if last == .y {
                     z = nil
-                } else if last == .Z {
+                } else if last == .z {
                     y = nil
                 }
             }
-            last = .X
+            last = .x
         }
     }
     
@@ -34,13 +34,13 @@ internal class FangYuan {
                 return
             }
             if let last = last {
-                if last == .X {
+                if last == .x {
                     z = nil
-                } else if last == .Z {
+                } else if last == .z {
                     x = nil
                 }
             }
-            last = .Y
+            last = .y
         }
     }
     
@@ -50,13 +50,13 @@ internal class FangYuan {
                 return
             }
             if let last = last {
-                if last == .Y {
+                if last == .y {
                     x = nil
-                } else if last == .X {
+                } else if last == .x {
                     y = nil
                 }
             }
-            last = .Z
+            last = .z
         }
     }
 }

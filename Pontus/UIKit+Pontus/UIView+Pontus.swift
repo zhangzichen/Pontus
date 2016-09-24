@@ -1,23 +1,23 @@
 
 import UIKit
 
-public func AnimateWithDuration(duration: NSTimeInterval, @noescape _ animations: () -> Void) {
+public func AnimateWithDuration(_ duration: TimeInterval, _ animations: () -> Void) {
     UIView.beginAnimations(nil, context: nil)
     UIView.setAnimationDuration(duration)
     animations()
     UIView.commitAnimations()
 }
 
-public func AnimateWithDuration(duration: NSTimeInterval, _ animations: () -> Void, _ completion: (() -> Void)?) {
+public func AnimateWithDuration(_ duration: TimeInterval, _ animations: @escaping () -> Void, _ completion: (() -> Void)?) {
     let outCompletion = completion
-    UIView.animateWithDuration(duration, animations: animations, completion: { (_) -> Void in
+    UIView.animate(withDuration: duration, animations: animations, completion: { (_) -> Void in
         outCompletion?()
     })
 }
 
 public extension UIView {
     
-    func addSubviews(views:[UIView]) -> Self {
+    func addSubviews(_ views:[UIView]) -> Self {
         for view in views {
             addSubview(view)
         }
@@ -29,65 +29,65 @@ public extension UIView {
      - parameter superView: 父视图
      - returns: self
      */
-    func superView(superView : UIView) -> Self {
+    func superView(_ superView : UIView) -> Self {
         superView.addSubview(self)
         return self
     }
     
-    func userInteractionEnabled(userInteractionEnabled : Bool) -> Self {
-        self.userInteractionEnabled = userInteractionEnabled
+    func userInteractionEnabled(_ userInteractionEnabled : Bool) -> Self {
+        self.isUserInteractionEnabled = userInteractionEnabled
         return self
     }
     
-    func backgroundColor(backgroundColor : UIColor) -> Self {
+    func backgroundColor(_ backgroundColor : UIColor) -> Self {
         self.backgroundColor = backgroundColor
         return self
     }
     
-    func cornerRadius(radius : CGFloat) -> Self {
+    func cornerRadius(_ radius : CGFloat) -> Self {
         layer.cornerRadius = radius
         layer.masksToBounds = true
         return self
     }
     
-    func alpha(alpha: CGFloat) -> Self {
+    func alpha(_ alpha: CGFloat) -> Self {
         self.alpha = alpha
         return self
     }
     
-    func frame(frame:CGRect) -> Self {
+    func frame(_ frame:CGRect) -> Self {
         self.frame = frame
         return self
     }
     
-    func frame(x x: CGFloatable, y: CGFloatable, width: CGFloatable, height: CGFloatable) -> Self {
+    func frame(x: CGFloatable, y: CGFloatable, width: CGFloatable, height: CGFloatable) -> Self {
         return frame(CGRect(x: x.f, y: y.f, width: width.f, height: height.f))
     }
     
     /// 参考 CM
-    func cm(y y: CGFloatable, width: CGFloatable, height: CGFloatable) -> Self {
+    func cm(y: CGFloatable, width: CGFloatable, height: CGFloatable) -> Self {
         self.frame = CM(y: y, width: width, height: height)
         return self
     }
     
     /// 参考 SWCM
-    func swcm(y y: CGFloatable, height: CGFloatable) -> Self {
+    func swcm(y: CGFloatable, height: CGFloatable) -> Self {
         self.frame = SWCM(y: y, height: height)
         return self
     }
     
-    func contentMode(contentMode : UIViewContentMode) -> Self {
+    func contentMode(_ contentMode : UIViewContentMode) -> Self {
         self.contentMode = contentMode
         return self
     }
     
     /// 设置 contentMode 为 .Center
     func contentModeCenter() -> Self {
-        self.contentMode = .Center
+        self.contentMode = .center
         return self
     }
     
-    func clipsToBounds(clipsToBounds:Bool) -> Self {
+    func clipsToBounds(_ clipsToBounds:Bool) -> Self {
         self.clipsToBounds = clipsToBounds
         return self
     }
@@ -101,11 +101,11 @@ public extension UIView {
      
      - returns: self
      */
-    func cornerRadius(radius : CGFloat, borderWidth : CGFloat, borderColor : UIColor) -> Self {
+    func cornerRadius(_ radius : CGFloat, borderWidth : CGFloat, borderColor : UIColor) -> Self {
         layer.cornerRadius = radius
         layer.masksToBounds = true
         layer.borderWidth = borderWidth
-        layer.borderColor = borderColor.CGColor
+        layer.borderColor = borderColor.cgColor
         return self
     }
     
@@ -116,11 +116,11 @@ public extension UIView {
      - parameter corners: 哪些角
      
      */
-    func setCornerRadius(radius : CGFloat, forCorners corners : UIRectCorner) -> Self {
+    func setCornerRadius(_ radius : CGFloat, forCorners corners : UIRectCorner) -> Self {
         let maskPath = UIBezierPath(roundedRect: bounds, byRoundingCorners: corners, cornerRadii: radius.size)
         let shapeLayer = CAShapeLayer()
         shapeLayer.frame = bounds
-        shapeLayer.path = maskPath.CGPath
+        shapeLayer.path = maskPath.cgPath
         layer.mask = shapeLayer
         return self
     }
@@ -130,11 +130,11 @@ public extension UIView {
         var screen_X: CGFloat = 0
         var screen_Y: CGFloat = 0
         var tempView = self
-        while !tempView.isKindOfClass(UIWindow) {
+        while !tempView.isKind(of: UIWindow.self) {
             screen_X += tempView.frame.origin.x
             screen_Y += tempView.frame.origin.y
             tempView = tempView.superview!
-            if tempView.isKindOfClass(UIScrollView) {
+            if tempView.isKind(of: UIScrollView.self) {
                 screen_X -= (tempView as! UIScrollView).contentOffset.x
                 screen_Y -= (tempView as! UIScrollView).contentOffset.y
             }
@@ -144,17 +144,19 @@ public extension UIView {
     }
     
     var screenshot : UIImage? {
-        UIGraphicsBeginImageContextWithOptions(size, false, UIScreen.mainScreen().scale)
-        layer.renderInContext(UIGraphicsGetCurrentContext()!)
+        UIGraphicsBeginImageContextWithOptions(size, false, UIScreen.main.scale)
+        layer.render(in: UIGraphicsGetCurrentContext()!)
         let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         return image
     }
     
-    func screenshot(finish:UIImage? -> Void) {
-        Async {
+    /// 异步获取截图
+    @discardableResult
+    func screenshot(_ finish: @escaping (UIImage?) -> Void) {
+        DispatchQueue(label: LogString + ".Async", attributes: []).async {
             let image = self.screenshot
-            Last {
+            DispatchQueue.main.async {
                 finish(image)
             }
         }

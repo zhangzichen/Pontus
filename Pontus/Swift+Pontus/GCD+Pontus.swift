@@ -6,9 +6,9 @@ import Foundation
  
  - parameter block: 做什么
  */
-public func Async(block:() -> Void) {
-    let queue = dispatch_queue_create(LogString + ".Async", nil)
-    dispatch_async(queue, block)
+public func Async(_ block:@escaping () -> Void) {
+    let queue = DispatchQueue(label: LogString + ".Async", attributes: [])
+    queue.async(execute: block)
 }
 
 /**
@@ -17,10 +17,10 @@ public func Async(block:() -> Void) {
  - parameter second: 多少秒
  - parameter block:  做什么
  */
-public func After(second second : Double, _ block:()->Void) {
-    let when = dispatch_time(DISPATCH_TIME_NOW, Int64(second * Double(NSEC_PER_SEC)))
-    let queue = dispatch_get_main_queue()
-    dispatch_after(when, queue, block)
+public func After(second : Double, _ block:@escaping ()->Void) {
+    let when = DispatchTime.now() + Double(Int64(second * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
+    let queue = DispatchQueue.main
+    queue.asyncAfter(deadline: when, execute: block)
 }
 
 /**
@@ -28,14 +28,14 @@ public func After(second second : Double, _ block:()->Void) {
  
  - parameter block: 做什么
  */
-public func Last(block:() -> Void) {
-    let queue = dispatch_get_main_queue()
-    dispatch_async(queue, block)
+public func Last(_ block:@escaping () -> Void) {
+    let queue = DispatchQueue.main
+    queue.async(execute: block)
 }
 
 /**
  仅仅是为了快速调用 after
  */
-@warn_unused_result
-public func After(second second : Double) { }
+
+public func After(second : Double) { }
 
