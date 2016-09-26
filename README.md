@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 #简介
 Pontus 是我使用 Swift 开发 iOS 应用一年下来所积累的一个工具库（当然其中深得之前共事同事的长处），这篇文章中我会简单说明一下自己是如何设计并使用 Pontus 的。
@@ -55,3 +56,20 @@ Pontus中很多方法都是为了实现链式语法，或者带有链式语法�
 # Pontus
 
 My own iOS development kit, written by Swift.
+=======
+# The CocoaPods Master Repo
+
+This repository contains the public [CocoaPods](https://github.com/CocoaPods/CocoaPods) specifications.
+
+## Links
+
+- [Specs and the Specs Repo](http://guides.cocoapods.org/making/specs-and-specs-repo.html): Learn about creating Podspec's and the Spec repo.
+- [Getting setup with Trunk](http://guides.cocoapods.org/making/getting-setup-with-trunk.html): Instructions for creating a CocoaPods user account
+
+
+## License
+
+These specifications and CocoaPods are available under the [MIT license](http://www.opensource.org/licenses/mit-license.php).
+
+
+>>>>>>> 3a9f0f2ba2716a1e0a0974b628fa6f1a0f975843
