@@ -10,9 +10,6 @@ Pod::Spec.new do |s|
   s.source_files = "Pontus/**/*.{swift}"
   s.frameworks   = "UIKit"
   s.requires_arc = true
-  s.pod_target_xcconfig = { 'SWIFT_VERSION' => '3.0' }
+  s.pod_target_xcconfig = { 'SWIFT_VERSION' => '2.3' }
 
-  s.subspec 'Foundation' do |ss|
-    ss.source_files = "Pontus/Swift+Pontus/*.{swift}"
-  end
 end
